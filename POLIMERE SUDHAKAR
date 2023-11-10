@@ -1,0 +1,31 @@
+package Sample;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.edge.EdgeDriver;
+
+public class sudha {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		WebDriver driver = new EdgeDriver();
+		driver.get("https://testpages.herokuapp.com/styled/tag/dynamic-table.html ");
+WebElement check = driver.findElement(By.xpath("/html/body/div/div[3]/details/summary"));
+check.click();
+
+driver.findElement(By.id("jsondata")).clear();
+driver.findElement(By.id("jsondata")).sendKeys("[{\"name\" : \"Bob\", \"age\" : 20, \"gender\": \"male\"}, {\"name\": \"George\", \"age\" : 42, \"gender\": \"male\"}, {\"name\":\r\n"
+		+ "\"Sara\", \"age\" : 42, \"gender\": \"female\"}, {\"name\": \"Conor\", \"age\" : 40, \"gender\": \"male\"}, {\"name\":\r\n"
+		+ "\"Jennifer\", \"age\" : 42, \"gender\": \"female\"}]\r\n"
+		+ "");
+driver.findElement(By.id("refreshtable")).click();
+
+
+//[{"name" : "Bob", "age" : 20}, {"name": "George", "age" : 42}]{"name": "Conor", "age" : 40, "gender": "male"}, {"name":
+//"Jennifer", "age" : 42, "gender": "female"}]
+
+	}
+
+}
